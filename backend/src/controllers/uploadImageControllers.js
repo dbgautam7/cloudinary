@@ -18,7 +18,7 @@ const postImages = async (req, res, next) => {
           folder: 'myPhotos'
         });
         urls.push(result.secure_url);
-        console.log(result,"@@")
+        // console.log(result,"@@")
         // Remove temporary file
         fs.unlinkSync(file.path);
       } catch (error) {
