@@ -1,21 +1,28 @@
 const cloudinary = require('../utils/cloudinary');
 const path = require('path');
 
-const postImage = async (req, res, next) => {
+const postImages = async (req, res, next) => {
   try {
-    // Check if file was uploaded
-    if (!req.file) {
-      return res.status(400).json({ error: 'No file uploaded' });
+    // Check if files were uploaded
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'No files uploaded' });
     }
 
-    // Upload file to Cloudinary
-    const result = await cloudinary.uploader.upload(path.join(__dirname, '..', 'uploads', req.file.filename));
+    // Upload files to Cloudinary
+    const urls = [];
+    const errors = [];
+    for (const file of req.files) {
+      const result = await cloudinary.uploader.upload(file.path, {
+        folder: 'myPhotos'
+      });
+      urls.push(result.secure_url);
+    }
 
-    // Return URL of uploaded file
-    res.json({ url: result.secure_url });
+    // Return URLs of uploaded files
+    res.json({ urls,errors });
   } catch (error) {
     next(error);
   }
-}
+};
 
-exports.postImage = postImage;
+exports.postImages = postImages;

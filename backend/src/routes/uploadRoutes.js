@@ -3,6 +3,6 @@ const app = Router();
 const uploadImageControllers=require("../controllers/uploadImageControllers")
 const multer = require('../middlewares/multer');
 
-app.post('/uploadImage',multer.upload, uploadImageControllers.postImage )
+app.post('/uploadImages',multer.upload, uploadImageControllers.postImages )
 
 module.exports = app;
