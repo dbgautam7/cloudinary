@@ -14,7 +14,7 @@ const UploadImageFromReactNode = () => {
             .then(resp => resp.json())
             .then(data => {
                 console.log(data, "data")
-                setImage(data)
+                setImage(data.url)
             })
             .catch(err => console.log(err))
     }
@@ -28,7 +28,7 @@ const UploadImageFromReactNode = () => {
             </div>
             <div>
                 <h1>Uploaded image will be displayed here</h1>
-                <img src={`${image.url}? w=400 & h=300`} alt="img" />
+                <img src={`${image}? w=400 & h=300`} alt="img" />
             </div>
     </div>
   )
