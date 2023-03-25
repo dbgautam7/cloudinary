@@ -5,9 +5,9 @@ const UploadImageFromReactOnly = () => {
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
     const cloudName = process.env.REACT_APP_CLOUD_NAME
-    console.log(cloudName, "cloudName")
+    // console.log(cloudName, "cloudName")
 
-    const uploadImage = () => {
+    const uploadImage = async() => {
         const formData = new FormData()
         formData.append("file", image)
         formData.append("upload_preset", "dbgautam")
@@ -15,7 +15,7 @@ const UploadImageFromReactOnly = () => {
         formData.append("width", "400");
         formData.append("height", "300");
 
-        fetch(` https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        await fetch(` https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
             method: "post",
             body: formData
         })
