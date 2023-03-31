@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const UploadImageFromReactOnly = () => {
 
@@ -29,6 +30,7 @@ const UploadImageFromReactOnly = () => {
 
     return (
         <div>
+            <Link to="/">Back to Home</Link>
             <div>
                 <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
                 <button onClick={uploadImage}>Upload</button>

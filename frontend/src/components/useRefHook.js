@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const UseRefHook = () => {
 
@@ -20,6 +21,7 @@ const UseRefHook = () => {
 
     return (
         <div style={{ display: 'flex',marginTop:"100px", justifyContent: 'center', alignItems: 'center'}}>
+            <Link to="/">Back to Home</Link>
             <input inputMode='numeric' pattern='[0-9]*' placeholder='Enter the Number' 
              ref={focusInput} />
             <button onClick={handleInput}>Enter</button>

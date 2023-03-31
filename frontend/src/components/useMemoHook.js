@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const UseMemoHook = () => {
 
@@ -19,6 +20,7 @@ const UseMemoHook = () => {
 
     return (
         <div>
+            <Link to="/">Back to Home</Link>
             <h1>useEffect vs useMemo Example</h1>
             <label>
                 Value:
