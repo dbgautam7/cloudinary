@@ -1,7 +1,9 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
 import Clock from './alarmClock/clock'
+import DynamicRouting from './dynamicRouting/dynamicRouting'
 import FeaturesList from './featuresList'
+import InfiniteScrolling from './infiniteScrolling'
 import Parent from './props/parent'
 import UploadImageFromReactNode from './uploadImageFromReactNode'
 import UploadImageFromReactOnly from './uploadImageFromReactOnly'
@@ -19,6 +21,8 @@ const RoutesHandler = () => {
                 <Route exact path="/clock" element={<Clock />} />
                 <Route exact path="/useRefHook" element={<UseRefHook />} />
                 <Route exact path="/useMemoHook" element={<UseMemoHook />} />
+                <Route exact path="/dynamicRouting/:category/:id" element={<DynamicRouting />} />
+                <Route exact path="/infiniteScrolling" element={<InfiniteScrolling />} />
             </Routes>
         </div>
     )
