@@ -16,7 +16,9 @@ const DynamicRouting = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ display: 'flex' }}>
+      <Link to="/">Back to Home</Link>
+    <div style={{ flex: 1 }}>
       <h1>This is Dynamic Routing in React</h1>
       <div>
         {data ? data.map((item, id) => {
@@ -27,9 +29,11 @@ const DynamicRouting = () => {
           )
         }) : <p>Loading...</p>}
       </div>
+    </div>
+    <div style={{ flex: 1 }}>
       <Products data={data} />
-
-    </>
+    </div>
+  </div>
   )
 }
 

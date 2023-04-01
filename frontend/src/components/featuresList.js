@@ -7,7 +7,7 @@ const data = [
   { label: 'Upload Image From React Only', link: '/uploadImageFromReactOnly' },
   {label: 'Upload Image From React Node', link: '/uploadImageFromReactNode'},
   { label: 'Props Handling', link: '/propsHandling' },
-  { label: 'Dynamic Routing', link: '/dynamicRouting' },
+  { label: 'Dynamic Routing', link: '/dynamicRouting/:category/:id' },
   { label: 'Infinite Scrolling', link: '/infiniteScrolling' },
   { label: 'Clock', link: '/clock' }
 ];
