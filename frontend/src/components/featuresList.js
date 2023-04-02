@@ -9,6 +9,7 @@ const data = [
   { label: 'Props Handling', link: '/propsHandling' },
   { label: 'Dynamic Routing', link: '/dynamicRouting/:category/:id' },
   { label: 'Infinite Scrolling', link: '/infiniteScrolling' },
+  { label: 'Custom Infinite Scroll', link: '/customInfiniteScroll' },
   { label: 'Clock', link: '/clock' }
 ];
 
