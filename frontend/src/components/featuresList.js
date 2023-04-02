@@ -1,5 +1,7 @@
-import { Divider, List } from 'antd';
+import { List } from 'antd';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import mojs from "@mojs/core";
 
 const data = [
   { label: 'UseRef Hook', link: '/useRefHook' },
@@ -10,6 +12,7 @@ const data = [
   { label: 'Dynamic Routing', link: '/dynamicRouting/:category/:id' },
   { label: 'Infinite Scrolling', link: '/infiniteScrolling' },
   { label: 'Custom Infinite Scroll', link: '/customInfiniteScroll' },
+  { label: 'Motion', link: '/motion' },
   { label: 'Clock', link: '/clock' }
 ];
 
@@ -19,9 +22,37 @@ const FeaturesList = () => {
     console.log('Item clicked:', link);
   };
 
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const timeline = new mojs.Timeline();
+
+    // Move text up and down
+    const move = new mojs.Html({
+      el: textRef.current,
+      x: { 0: 100, isYoyo: true },
+      duration: 5000,
+      repeat: 99,
+      easing: 'elastic.out',
+    });
+
+    // Change text color
+    const color = new mojs.Html({
+      el: textRef.current,
+      color: { "blue":"yellow" },
+      duration: 4000,
+      repeat: 99,
+      yoyo: true,
+      easing: 'cubic.out',
+    });
+
+    timeline.add(move, color);
+    timeline.play();
+  }, []);
+
   return (
     <>
-      <Divider orientation="center"><h1 style={{color:"blue"}}>Multi-Features App</h1></Divider>
+     <h1 ref={textRef} style={{ textAlign:"center"}}>Multi-Features App</h1>
       <List
         size="large"
         style={{display:"flex", width:"40%", justifyContent:"center", alignItems:"center", margin:"100px auto"}}

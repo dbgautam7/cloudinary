@@ -12,6 +12,7 @@ const InfiniteScrolling = () => {
     fetch(`https://dummyjson.com/products?limit=${limit}&skip=${(page-1) * limit}&totalCount=${totalCount}`)
       .then((response) => response.json())
       .then((newData) => {
+        console.log(newData,"newData")
         setData((prevData) => [...prevData, ...newData.products]);
         setTotalCount(newData.totalCount);
         setLoading(false);
@@ -44,6 +45,8 @@ const InfiniteScrolling = () => {
             {item.description}
             <br></br>
             {item.price}
+            <br></br>
+            {<img src={item.images[0]} alt="img" />}
           </li>
         ))}
       </ul>
