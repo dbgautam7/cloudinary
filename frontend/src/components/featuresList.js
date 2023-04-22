@@ -14,7 +14,7 @@ const data = [
   { label: "Custom Infinite Scroll", link: "/customInfiniteScroll" },
   { label: "Motion", link: "/motion" },
   { label: "Clock", link: "/clock" },
-  { label: "Upload File", link: "/uploadFile" },
+  { label: "Upload Audio", link: "/uploadAudio" },
 ];
 
 const FeaturesList = () => {

@@ -2,7 +2,16 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "../frontend/audio");
+    // Add mimetype check here
+    if (
+      file.mimetype === "audio/mpeg" ||
+      file.mimetype === "audio/mp3" ||
+      file.mimetype === "audio/mp4"
+    ) {
+      cb(null, "../frontend/audio");
+    } else {
+      console.log("Unformatted audio");
+    }
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);

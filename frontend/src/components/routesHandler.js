@@ -48,7 +48,7 @@ const RoutesHandler = () => {
           element={<CustomInfiniteScroll />}
         />
         <Route exact path="/motion" element={<MotionJs />} />
-        <Route exact path="/uploadFile" element={<UploadAudio />} />
+        <Route exact path="/uploadAudio" element={<UploadAudio />} />
       </Routes>
     </div>
   );

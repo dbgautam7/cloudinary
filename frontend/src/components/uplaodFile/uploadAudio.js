@@ -63,7 +63,11 @@ const UploadAudio = () => {
         }}
       >
         <button onClick={handleClick}>{buttonName}</button>
-        <input type="file" onChange={(e) => setAudioFile(e.target.files[0])} />
+        <input
+          type="file"
+          accept="audio/*"
+          onChange={(e) => setAudioFile(e.target.files[0])}
+        />
         <button onClick={handleUploadAudio}>Upload Audio</button>
       </div>
     </>
