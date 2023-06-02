@@ -12,6 +12,9 @@ import UseMemoHook from "./useMemoHook";
 import UseRefHook from "./useRefHook";
 import MotionJs from "./motion/motion";
 import UploadAudio from "./uplaodFile/uploadAudio";
+import ReactQuill from "./reactQuill";
+import Email from "./email";
+import GalliMap from "./galliMap";
 
 const RoutesHandler = () => {
   return (
@@ -48,7 +51,10 @@ const RoutesHandler = () => {
           element={<CustomInfiniteScroll />}
         />
         <Route exact path="/motion" element={<MotionJs />} />
-        <Route exact path="/uploadAudio" element={<UploadAudio />} />
+
+        <Route exact path="/reactQuill" element={<ReactQuill />} />
+        <Route exact path="/reactEmailJS" element={<Email />} />
+        <Route exact path="/galliMap" element={<GalliMap />} />
       </Routes>
     </div>
   );

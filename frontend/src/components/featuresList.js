@@ -14,7 +14,9 @@ const data = [
   { label: "Custom Infinite Scroll", link: "/customInfiniteScroll" },
   { label: "Motion", link: "/motion" },
   { label: "Clock", link: "/clock" },
-  { label: "Upload Audio", link: "/uploadAudio" },
+  { label: "React Quill", link: "/reactQuill" },
+  { label: "React EmailJS", link: "/reactEmailJS" },
+  { label: "Galli Map", link: "/galliMap" },
 ];
 
 const FeaturesList = () => {
