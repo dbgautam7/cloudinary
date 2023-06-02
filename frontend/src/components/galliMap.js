@@ -2,6 +2,7 @@
 import AsyncSelect from "react-select/async";
 import { useRef, useState } from "react";
 import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const GALLI_MAPS_ACCESS_TOKEN = process.env.REACT_APP_GALLI_MAPS_ACCESS_TOKEN;
 
@@ -30,15 +31,21 @@ const GalliMap = () => {
     }, 500);
   };
 
-  const postLocationData = async (value) => {
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/location`, value)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "data ===line 38");
-      })
-      .catch((err) => console.log(err));
-  };
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: (data) => {
+      return axios.post(`${process.env.REACT_APP_SERVER_URL}/location`, data);
+    },
+    onSuccess: (data) => {
+      console.log(data, "===line 40");
+    },
+    onError: () => {
+      alert("there was an error");
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries("create");
+    },
+  });
 
   const changeHandler = (selectedOptions) => {
     const selectedLocations = selectedOptions.map((option) => ({
@@ -46,7 +53,7 @@ const GalliMap = () => {
       label: option.label,
     }));
     setLocation(selectedLocations);
-    postLocationData(selectedLocations);
+    mutation.mutate(selectedLocations);
   };
   console.log(location, "==== line 40");
 
