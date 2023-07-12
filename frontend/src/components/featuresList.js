@@ -17,6 +17,9 @@ const data = [
   { label: "React Quill", link: "/reactQuill" },
   { label: "React EmailJS", link: "/reactEmailJS" },
   { label: "Galli Map", link: "/galliMap" },
+  { label: "Dark Mode", link: "/darkMode" },
+  { label: "React Hook Form", link: "/reactHookForm" },
+  { label: "Multi Stepper", link: "/stepper" },
 ];
 
 const FeaturesList = () => {

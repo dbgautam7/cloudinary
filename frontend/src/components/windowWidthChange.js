@@ -1,5 +1,6 @@
+import ColorContext from "./context/colorContext";
 import "./styles.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 export default function App() {
   const setWindowsDimensions = () => {
