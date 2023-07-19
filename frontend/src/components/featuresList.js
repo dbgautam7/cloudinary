@@ -20,6 +20,7 @@ const data = [
   { label: "Dark Mode", link: "/darkMode" },
   { label: "React Hook Form", link: "/reactHookForm" },
   { label: "Multi Stepper", link: "/stepper" },
+  { label: "Antd Collapse", link: "/collapse" },
 ];
 
 const FeaturesList = () => {

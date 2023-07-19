@@ -18,6 +18,7 @@ import GalliMap from "./galliMap";
 import FormRoutes from "./reactHookForm/formRoutes";
 import Stepper from "./stepper";
 import DarkMode from "./darkMode";
+import AntdCollapse from "./antdCollapse";
 
 const RoutesHandler = () => {
   return (
@@ -60,6 +61,7 @@ const RoutesHandler = () => {
         <Route exact path="/reactHookForm/*" element={<FormRoutes />} />
         <Route exact path="/darkMode" element={<DarkMode />} />
         <Route exact path="/stepper" element={<Stepper />} />
+        <Route exact path="/collapse" element={<AntdCollapse />} />
       </Routes>
     </div>
   );
