@@ -19,6 +19,7 @@ import FormRoutes from "./reactHookForm/formRoutes";
 import Stepper from "./stepper";
 import DarkMode from "./darkMode";
 import AntdCollapse from "./antdCollapse";
+import CustomTable from "./table/CustomTable";
 
 const RoutesHandler = () => {
   return (
@@ -62,6 +63,7 @@ const RoutesHandler = () => {
         <Route exact path="/darkMode" element={<DarkMode />} />
         <Route exact path="/stepper" element={<Stepper />} />
         <Route exact path="/collapse" element={<AntdCollapse />} />
+        <Route exact path="/table" element={<CustomTable />} />
       </Routes>
     </div>
   );

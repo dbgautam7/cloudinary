@@ -21,12 +21,11 @@ const data = [
   { label: "React Hook Form", link: "/reactHookForm" },
   { label: "Multi Stepper", link: "/stepper" },
   { label: "Antd Collapse", link: "/collapse" },
+  { label: "React Table", link: "/table" },
 ];
 
 const FeaturesList = () => {
-  const handleItemClick = (link) => {
-    console.log("Item clicked:", link);
-  };
+  const handleItemClick = (link) => {};
 
   const textRef = useRef(null);
 
