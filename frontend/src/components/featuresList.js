@@ -17,12 +17,15 @@ const data = [
   { label: "React Quill", link: "/reactQuill" },
   { label: "React EmailJS", link: "/reactEmailJS" },
   { label: "Galli Map", link: "/galliMap" },
+  { label: "Dark Mode", link: "/darkMode" },
+  { label: "React Hook Form", link: "/reactHookForm" },
+  { label: "Multi Stepper", link: "/stepper" },
+  { label: "Antd Collapse", link: "/collapse" },
+  { label: "React Table", link: "/table" },
 ];
 
 const FeaturesList = () => {
-  const handleItemClick = (link) => {
-    console.log("Item clicked:", link);
-  };
+  const handleItemClick = (link) => {};
 
   const textRef = useRef(null);
 
@@ -64,7 +67,8 @@ const FeaturesList = () => {
           width: "40%",
           justifyContent: "center",
           alignItems: "center",
-          margin: "100px auto",
+          margin: "auto",
+          marginBottom:"100px"
         }}
         bordered
         dataSource={data}

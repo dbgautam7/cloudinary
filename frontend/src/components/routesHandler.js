@@ -15,6 +15,11 @@ import UploadAudio from "./uplaodFile/uploadAudio";
 import ReactQuill from "./reactQuill";
 import Email from "./email";
 import GalliMap from "./galliMap";
+import FormRoutes from "./reactHookForm/formRoutes";
+import Stepper from "./stepper";
+import DarkMode from "./darkMode";
+import AntdCollapse from "./antdCollapse";
+import CustomTable from "./table/CustomTable";
 
 const RoutesHandler = () => {
   return (
@@ -51,10 +56,14 @@ const RoutesHandler = () => {
           element={<CustomInfiniteScroll />}
         />
         <Route exact path="/motion" element={<MotionJs />} />
-
         <Route exact path="/reactQuill" element={<ReactQuill />} />
         <Route exact path="/reactEmailJS" element={<Email />} />
         <Route exact path="/galliMap" element={<GalliMap />} />
+        <Route exact path="/reactHookForm/*" element={<FormRoutes />} />
+        <Route exact path="/darkMode" element={<DarkMode />} />
+        <Route exact path="/stepper" element={<Stepper />} />
+        <Route exact path="/collapse" element={<AntdCollapse />} />
+        <Route exact path="/table" element={<CustomTable />} />
       </Routes>
     </div>
   );

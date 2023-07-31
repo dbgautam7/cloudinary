@@ -1,14 +1,14 @@
-/* import Select from 'react-select'; */
 import AsyncSelect from "react-select/async";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import axios from "axios";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutate } from "../hooks/useMutateData";
 
 const GALLI_MAPS_ACCESS_TOKEN = process.env.REACT_APP_GALLI_MAPS_ACCESS_TOKEN;
 
 const GalliMap = () => {
   const timeout = useRef();
-  const [location, setLocation] = useState([]);
+  const locationMutation = useMutate();
+  console.log(locationMutation?.data?.data?.data, "=========line 13");
 
   const loadOptions = (inputValue, callback) => {
     clearTimeout(timeout.current);
@@ -31,31 +31,13 @@ const GalliMap = () => {
     }, 500);
   };
 
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: (data) => {
-      return axios.post(`${process.env.REACT_APP_SERVER_URL}/location`, data);
-    },
-    onSuccess: (data) => {
-      console.log(data, "===line 40");
-    },
-    onError: () => {
-      alert("there was an error");
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries("create");
-    },
-  });
-
   const changeHandler = (selectedOptions) => {
     const selectedLocations = selectedOptions.map((option) => ({
       value: option.value,
       label: option.label,
     }));
-    setLocation(selectedLocations);
-    mutation.mutate(selectedLocations);
+    locationMutation.mutate(["location", selectedLocations]);
   };
-  console.log(location, "==== line 40");
 
   return (
     <div className="m-0 h-1/2 w-1/2 border-gray-500/50 p-0">
@@ -64,7 +46,6 @@ const GalliMap = () => {
         loadOptions={loadOptions}
         cacheOptions={true}
         isClearable
-        value={location}
         onChange={changeHandler}
         isMulti={true}
       />

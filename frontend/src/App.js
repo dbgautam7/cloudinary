@@ -1,12 +1,28 @@
-import './App.css';
-import React from 'react'
-import RoutesHandler from './components/routesHandler';
+import "./App.css";
+import React, { useState } from "react";
+import RoutesHandler from "./components/routesHandler";
+import { ThemeContext, themes } from "./components/context/themeContext";
 
 const App = () => {
-    return (
-        <div>
-            <RoutesHandler />
-        </div>
-    )
-}
+  const [theme, setTheme] = useState(themes.light);
+
+  const toggleTheme = () => {
+    theme === themes.light ? setTheme(themes.dark) : setTheme(themes.light);
+  };
+
+  const inlineStyles = {
+    container: {
+      backgroundColor: theme === themes.light ? "#ffffff" : "#000000",
+      color:theme === themes.light ? "#000000" : "#ffffff"
+    },
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+      <div className="App" style={inlineStyles.container}>
+        <RoutesHandler />
+      </div>
+    </ThemeContext.Provider>
+  );
+};
 export default App;

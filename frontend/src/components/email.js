@@ -1,7 +1,11 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import emailjs from "emailjs-com";
+import ColorContext from "./context/colorContext";
 
 const Email = () => {
+  const style = useContext(ColorContext);
+  console.log(style, "style");
+
   const emailRef = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
