@@ -1,5 +1,5 @@
 import { Button, Checkbox, Collapse } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -39,30 +39,32 @@ const data = [
 ];
 
 const AntdCollapse = () => {
-  const [checkedLists, setCheckedLists] = useState({
-    2: [3, 4],
-  });
+  const [checkedLists, setCheckedLists] = useState([1, 2]);
   console.log(checkedLists, "checkLists");
 
-  const { handleSubmit, control, watch, setValue } = useForm({
-    defaultValues: {},
-  });
+  const { handleSubmit, control, watch, setValue } = useForm();
+
+  useEffect(() => {
+    // Set the default values in the form using the setValue function
+    setValue("permissions", checkedLists);
+  }, [checkedLists, setValue]);
 
   const onChange = (list, key) => {
     const newCheckedLists = { ...checkedLists, [key]: list };
     console.log(newCheckedLists, "newCheckLists");
-    setCheckedLists(newCheckedLists);
-    setValue("permissions", newCheckedLists);
+    const values = Object.values(newCheckedLists).flat();
+    setCheckedLists(values);
+    console.log(values, "values");
   };
 
   const onCheckAllChange = (e, key) => {
     const newList = e.target.checked
       ? data[key - 1].permissions.map((p) => p.id)
       : [];
-    console.log(newList, "newLsit");
+    console.log(newList, "newList");
     const newCheckedLists = { ...checkedLists, [key]: newList };
-    setCheckedLists(newCheckedLists);
-    setValue("permissions", newCheckedLists);
+    const values = Object.values(newCheckedLists).flat();
+    setCheckedLists(values);
   };
 
   const items = data.map((item) => ({
@@ -71,11 +73,11 @@ const AntdCollapse = () => {
       <span className="flex items-center gap-4">
         <Checkbox
           indeterminate={
-            checkedLists[item.id]?.length > 0 &&
-            checkedLists[item.id]?.length < item.permissions.length
+            checkedLists?.length > 0 &&
+            checkedLists?.length < item.permissions.length
           }
           onChange={(e) => onCheckAllChange(e, item.id)}
-          checked={checkedLists[item.id]?.length === item.permissions.length}
+          checked={checkedLists?.length === item.permissions.length}
         >
           {item.name}
         </Checkbox>
@@ -88,7 +90,7 @@ const AntdCollapse = () => {
             label: `${perm.name} - ${perm.description}`,
             value: perm.id, // Store the ID as the value
           }))}
-          value={checkedLists[item.id]}
+          value={checkedLists}
           onChange={(list) => onChange(list, item.id)}
         />
       </div>
@@ -96,11 +98,12 @@ const AntdCollapse = () => {
   }));
 
   console.log(watch("permissions"), "watch");
+  console.log(checkedLists, "checkedList");
 
   const onSubmitHandler = (data) => {
     console.log(data, "data");
-    const values = Object.values(data.permissions).flat();
-    console.log(values, "values");
+    // const values = Object.values(data.permissions).flat();
+    // console.log(values, "values");
   };
 
   return (

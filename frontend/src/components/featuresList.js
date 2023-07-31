@@ -67,7 +67,8 @@ const FeaturesList = () => {
           width: "40%",
           justifyContent: "center",
           alignItems: "center",
-          margin: "100px auto",
+          margin: "auto",
+          marginBottom:"100px"
         }}
         bordered
         dataSource={data}

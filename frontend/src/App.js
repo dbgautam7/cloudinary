@@ -12,7 +12,8 @@ const App = () => {
 
   const inlineStyles = {
     container: {
-      backgroundColor: theme === themes.light ? "lightblue" : "black",
+      backgroundColor: theme === themes.light ? "#ffffff" : "#000000",
+      color:theme === themes.light ? "#000000" : "#ffffff"
     },
   };
 
